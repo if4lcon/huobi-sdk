@@ -125,7 +125,7 @@ export class HuobiSDKBase extends EventEmitter {
             .then(data => {
                 try {
                     const json = JSON.parse(data as any);
-                    if (json.status === "ok") {
+                    if (json.status === "ok" || json.code === 200) {
                         return json.data || json;
                     } else {
                         throw Error(`${json['err-msg'] || json['err_msg'] || json}`);
